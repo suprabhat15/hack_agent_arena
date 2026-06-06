@@ -16,3 +16,4 @@
 ["INSERT INTO account_passwords (record_hash, supervisor_id, account_name, password) VALUES (?, ?, ?, ?)",["gtpJAEjphhk=",1,"todoist","d3bqrcC"],false]
 ["INSERT INTO account_passwords (record_hash, supervisor_id, account_name, password) VALUES (?, ?, ?, ?)",["ZkL+NkODEDk=",1,"venmo","8^x3#y8"],false]
 ["INSERT INTO tasks (status, record_hash, supervisor_id, instruction, answer) VALUES (?, ?, ?, ?, ?)",[null,"QsuTEBHajT0=",1,"I have alarms for all my work meetings. Some of my coworkers have canceled their meeting with me via email. Please disable the corresponding alarms from my phone.","\"<<NOT_GIVEN>>\""],false]
+["UPDATE tasks SET status=?, record_hash=?, answer=? WHERE tasks.id = ?",["success","cr50Zid78S4=","null",1],false]

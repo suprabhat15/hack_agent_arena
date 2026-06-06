@@ -1,8 +1,8 @@
-────────────────────────────────────────────────────────── Overall Stats ──────────────────────────────────────────────────────────
+────────────────────────────────────────────────────── Overall Stats ──────────────────────────────────────────────────────
 Num Passed Tests : 3
 Num Failed Tests : 7
 Num Total  Tests : 10
-───────────────────────────────────────────────────────────── Passes ──────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────── Passes ──────────────────────────────────────────────────────────
 >> Passed Requirement
 obtain added, updated, removed splitwise.Expense records using models.changed_records,
 and assert 0 were updated or removed.
@@ -11,7 +11,7 @@ obtain added, updated, removed splitwise.ExpenseShare records using models.chang
 and assert 0 were updated or removed.
 >> Passed Requirement
 assert all added expense shares have expense_id matching the added expenses.
-────────────────────────────────────────────────────────────── Fails ──────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────── Fails ──────────────────────────────────────────────────────────
 >> Failed Requirement
 assert answers match.
 ```python
@@ -39,12 +39,12 @@ with test(
 ```
 ----------
 AssertionError:
-set()
+{'gmail.Attachment'}
 ==
-{'splitwise.Expense', 'splitwise.ExpenseShare', 'splitwise.Notification', 'gmail.Attachment'}
+{'gmail.Attachment', 'splitwise.Expense', 'splitwise.ExpenseShare', 'splitwise.Notification'}
 
 In right but not left:
-['splitwise.Expense', 'splitwise.ExpenseShare', 'splitwise.Notification', 'gmail.Attachment']
+['splitwise.Expense', 'splitwise.ExpenseShare', 'splitwise.Notification']
 >> Failed Requirement
 assert all added expenses have group_id matching private_data.group_id.
 ```python
@@ -92,14 +92,14 @@ with test(
 AssertionError:
 {}
 ==
-Munch({'cable bill [06-23]': 186 ± 0.51, 'cable bill [05-23]': 117 ± 0.51, 'cable bill [04-23]': 153 ± 0.51, 'cable bill [03-23]':
-146 ± 0.51, 'cable bill [02-23]': 200 ± 0.51, 'cable bill [01-23]': 164 ± 0.51})
+Munch({'cable bill [06-23]': 186 ± 0.51, 'cable bill [05-23]': 117 ± 0.51, 'cable bill [04-23]': 153 ± 0.51, 'cable bill
+[03-23]': 146 ± 0.51, 'cable bill [02-23]': 200 ± 0.51, 'cable bill [01-23]': 164 ± 0.51})
 
 Original values:
 {}
 ==
-Munch({'cable bill [06-23]': 186, 'cable bill [05-23]': 117, 'cable bill [04-23]': 153, 'cable bill [03-23]': 146, 'cable bill
-[02-23]': 200, 'cable bill [01-23]': 164})
+Munch({'cable bill [06-23]': 186, 'cable bill [05-23]': 117, 'cable bill [04-23]': 153, 'cable bill [03-23]': 146, 'cable
+bill [02-23]': 200, 'cable bill [01-23]': 164})
 >> Failed Requirement
 assert member_ids from added expense shares from all unique expenses match
 private_data.member_ids.
@@ -132,12 +132,12 @@ with test(
 AssertionError:
 {}
 ==
-{90: [39.0 ± 0.51, 48.67 ± 0.51, 51.0 ± 0.51, 54.67 ± 0.51, 62.0 ± 0.51, 66.67 ± 0.51], 40: [39.0 ± 0.51, 48.67 ± 0.51, 51.0 ±
-0.51, 54.67 ± 0.51, 62.0 ± 0.51, 66.67 ± 0.51], 46: [39.0 ± 0.51, 48.67 ± 0.51, 51.0 ± 0.51, 54.67 ± 0.51, 62.0 ± 0.51, 66.67 ±
-0.51]}
+{90: [39.0 ± 0.51, 48.67 ± 0.51, 51.0 ± 0.51, 54.67 ± 0.51, 62.0 ± 0.51, 66.67 ± 0.51], 40: [39.0 ± 0.51, 48.67 ± 0.51,
+51.0 ± 0.51, 54.67 ± 0.51, 62.0 ± 0.51, 66.67 ± 0.51], 46: [39.0 ± 0.51, 48.67 ± 0.51, 51.0 ± 0.51, 54.67 ± 0.51, 62.0 ±
+0.51, 66.67 ± 0.51]}
 
 Original values:
 {}
 ==
-{90: [39.0, 48.67, 51.0, 54.67, 62.0, 66.67], 40: [39.0, 48.67, 51.0, 54.67, 62.0, 66.67], 46: [39.0, 48.67, 51.0, 54.67, 62.0,
-66.67]}
+{90: [39.0, 48.67, 51.0, 54.67, 62.0, 66.67], 40: [39.0, 48.67, 51.0, 54.67, 62.0, 66.67], 46: [39.0, 48.67, 51.0, 54.67,
+62.0, 66.67]}

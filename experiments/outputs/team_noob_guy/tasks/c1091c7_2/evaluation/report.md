@@ -1,24 +1,14 @@
-────────────────────────────────────────────────────────── Overall Stats ──────────────────────────────────────────────────────────
-Num Passed Tests : 1
-Num Failed Tests : 3
+────────────────────────────────────────────────────── Overall Stats ──────────────────────────────────────────────────────
+Num Passed Tests : 2
+Num Failed Tests : 2
 Num Total  Tests : 4
-───────────────────────────────────────────────────────────── Passes ──────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────── Passes ──────────────────────────────────────────────────────────
+>> Passed Requirement
+assert answers match.
 >> Passed Requirement
 obtain updated, removed phone.Alarm records using models.changed_records,
 and assert 0 alarms were added or removed.
-────────────────────────────────────────────────────────────── Fails ──────────────────────────────────────────────────────────────
->> Failed Requirement
-assert answers match.
-```python
-with test(
-    """
-    assert answers match.
-    """
-):
-    test.answer(predicted_answer, ground_truth_answer)
-```
-----------
-AssertionError:  '<<not_given>>' == 'null'
+────────────────────────────────────────────────────────── Fails ──────────────────────────────────────────────────────────
 >> Failed Requirement
 assert model changes match phone.Alarm.
 ```python

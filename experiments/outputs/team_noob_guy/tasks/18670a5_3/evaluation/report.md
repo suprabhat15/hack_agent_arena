@@ -1,12 +1,12 @@
-────────────────────────────────────────────────────────── Overall Stats ──────────────────────────────────────────────────────────
+────────────────────────────────────────────────────── Overall Stats ──────────────────────────────────────────────────────
 Num Passed Tests : 1
 Num Failed Tests : 9
 Num Total  Tests : 10
-───────────────────────────────────────────────────────────── Passes ──────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────── Passes ──────────────────────────────────────────────────────────
 >> Passed Requirement
 obtain added, updated, deleted gmail.Draft using models.changed_records, and
 assert 0 is updated, 0 is deleted.
-────────────────────────────────────────────────────────────── Fails ──────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────── Fails ──────────────────────────────────────────────────────────
 >> Failed Requirement
 assert answers match.
 ```python
@@ -64,21 +64,21 @@ with test(
 AssertionError:
 []
 ==
-["meeting 'customer feedback and improvement session' starting soon", "meeting 'it security briefing and training' starting soon",
-"meeting 'leadership training session' starting soon", "meeting 'project kickoff meeting' starting soon", "meeting 'sales pipeline
-analysis meeting' starting soon"]
+["meeting 'customer feedback and improvement session' starting soon", "meeting 'it security briefing and training' starting
+soon", "meeting 'leadership training session' starting soon", "meeting 'project kickoff meeting' starting soon", "meeting
+'sales pipeline analysis meeting' starting soon"]
 
 In right but not left:
-["meeting 'customer feedback and improvement session' starting soon", "meeting 'it security briefing and training' starting soon",
-"meeting 'leadership training session' starting soon", "meeting 'project kickoff meeting' starting soon", "meeting 'sales pipeline
-analysis meeting' starting soon"]
+["meeting 'customer feedback and improvement session' starting soon", "meeting 'it security briefing and training' starting
+soon", "meeting 'leadership training session' starting soon", "meeting 'project kickoff meeting' starting soon", "meeting
+'sales pipeline analysis meeting' starting soon"]
 
 Original values:
 []
 ==
-["Meeting 'Leadership Training Session' Starting Soon", "Meeting 'Project Kickoff Meeting' Starting Soon", "Meeting 'Customer
-Feedback and Improvement Session' Starting Soon", "Meeting 'IT Security Briefing and Training' Starting Soon", "Meeting 'Sales
-Pipeline Analysis Meeting' Starting Soon"]
+["Meeting 'Leadership Training Session' Starting Soon", "Meeting 'Project Kickoff Meeting' Starting Soon", "Meeting
+'Customer Feedback and Improvement Session' Starting Soon", "Meeting 'IT Security Briefing and Training' Starting Soon",
+"Meeting 'Sales Pipeline Analysis Meeting' Starting Soon"]
 >> Failed Requirement
 assert all the added drafts bodies are empty (after stripping)
 ```python
@@ -109,12 +109,12 @@ with test(
 AssertionError:
 []
 ==
-[DateTime(2023, 5, 23, 13, 40, 0), DateTime(2023, 5, 24, 15, 40, 0), DateTime(2023, 5, 25, 12, 40, 0), DateTime(2023, 5, 26, 10,
-40, 0), DateTime(2023, 5, 26, 14, 40, 0)]
+[DateTime(2023, 5, 23, 13, 40, 0), DateTime(2023, 5, 24, 15, 40, 0), DateTime(2023, 5, 25, 12, 40, 0), DateTime(2023, 5,
+26, 10, 40, 0), DateTime(2023, 5, 26, 14, 40, 0)]
 
 In right but not left:
-[DateTime(2023, 5, 23, 13, 40, 0), DateTime(2023, 5, 24, 15, 40, 0), DateTime(2023, 5, 25, 12, 40, 0), DateTime(2023, 5, 26, 10,
-40, 0), DateTime(2023, 5, 26, 14, 40, 0)]
+[DateTime(2023, 5, 23, 13, 40, 0), DateTime(2023, 5, 24, 15, 40, 0), DateTime(2023, 5, 25, 12, 40, 0), DateTime(2023, 5,
+26, 10, 40, 0), DateTime(2023, 5, 26, 14, 40, 0)]
 >> Failed Requirement
 assert the added drafts have recipient_ids matching the recipient_ids
 from private_data.expected_draft_data (ignore order)
@@ -153,9 +153,9 @@ with test(
 AssertionError:
 {}
 ==
-{"Meeting 'Leadership Training Session' Starting Soon": [25, 36, 59], "Meeting 'Project Kickoff Meeting' Starting Soon": [36, 41,
-25], "Meeting 'Customer Feedback and Improvement Session' Starting Soon": [59, 99], "Meeting 'IT Security Briefing and Training'
-Starting Soon": [80, 59], "Meeting 'Sales Pipeline Analysis Meeting' Starting Soon": [25, 70]}
+{"Meeting 'Leadership Training Session' Starting Soon": [25, 36, 59], "Meeting 'Project Kickoff Meeting' Starting Soon":
+[36, 41, 25], "Meeting 'Customer Feedback and Improvement Session' Starting Soon": [59, 99], "Meeting 'IT Security Briefing
+and Training' Starting Soon": [80, 59], "Meeting 'Sales Pipeline Analysis Meeting' Starting Soon": [25, 70]}
 >> Failed Requirement
 assert the subject to scheduled_send_at dict from the added drafts
 matches that from the private_data.expected_draft_data.
@@ -173,7 +173,7 @@ with test(
 AssertionError:
 {}
 ==
-{"Meeting 'Leadership Training Session' Starting Soon": DateTime(2023, 5, 23, 13, 40, 0), "Meeting 'Project Kickoff Meeting'
-Starting Soon": DateTime(2023, 5, 24, 15, 40, 0), "Meeting 'Customer Feedback and Improvement Session' Starting Soon":
-DateTime(2023, 5, 25, 12, 40, 0), "Meeting 'IT Security Briefing and Training' Starting Soon": DateTime(2023, 5, 26, 10, 40, 0),
-"Meeting 'Sales Pipeline Analysis Meeting' Starting Soon": DateTime(2023, 5, 26, 14, 40, 0)}
+{"Meeting 'Leadership Training Session' Starting Soon": DateTime(2023, 5, 23, 13, 40, 0), "Meeting 'Project Kickoff
+Meeting' Starting Soon": DateTime(2023, 5, 24, 15, 40, 0), "Meeting 'Customer Feedback and Improvement Session' Starting
+Soon": DateTime(2023, 5, 25, 12, 40, 0), "Meeting 'IT Security Briefing and Training' Starting Soon": DateTime(2023, 5, 26,
+10, 40, 0), "Meeting 'Sales Pipeline Analysis Meeting' Starting Soon": DateTime(2023, 5, 26, 14, 40, 0)}

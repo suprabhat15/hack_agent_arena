@@ -22,5 +22,3 @@
 ["UPDATE drafts SET record_hash=?, subject=? WHERE drafts.id = ?",["IkDO8nXbMnc=","",24],false]
 ["UPDATE drafts_fts SET saved_search_text = ? WHERE id = ?",["",85],false]
 ["UPDATE drafts SET record_hash=?, subject=? WHERE drafts.id = ?",["DFeCVXa7fKE=","",85],false]
-["DELETE FROM drafts WHERE drafts.id = ?",[27],false]
-["DELETE FROM drafts WHERE drafts.id = ?",[85],false]

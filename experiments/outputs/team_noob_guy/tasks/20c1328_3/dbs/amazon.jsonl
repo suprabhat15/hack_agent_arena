@@ -3,3 +3,5 @@
 ["UPDATE products SET record_hash=?, inventory_quantity=? WHERE products.id = ?",["DKOWWXbmxso=",1,1344],false]
 ["UPDATE products SET record_hash=?, inventory_quantity=? WHERE products.id = ?",["RcOM+O9yPPY=",4,1341],false]
 ["UPDATE products SET record_hash=?, inventory_quantity=? WHERE products.id = ?",["oueyCEQk2xA=",4,1342],false]
+["INSERT INTO cart_entries (record_hash, user_id, product_id, quantity, gift_wrap_quantity) VALUES (?, ?, ?, ?, ?)",["yiT2gI/9oUs=",3,1344,1,0],false]
+["UPDATE cart_entries SET record_hash=?, quantity=? WHERE cart_entries.id = ?",["CFe2aTbdiUU=",2,8328],false]

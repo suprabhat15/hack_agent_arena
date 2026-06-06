@@ -1,11 +1,11 @@
-────────────────────────────────────────────────────────── Overall Stats ──────────────────────────────────────────────────────────
+────────────────────────────────────────────────────── Overall Stats ──────────────────────────────────────────────────────
 Num Passed Tests : 1
 Num Failed Tests : 8
 Num Total  Tests : 9
-───────────────────────────────────────────────────────────── Passes ──────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────── Passes ──────────────────────────────────────────────────────────
 >> Passed Requirement
 assert 0 records have been updated or deleted from amazon.Address using models.changed_records.
-────────────────────────────────────────────────────────────── Fails ──────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────── Fails ──────────────────────────────────────────────────────────
 >> Failed Requirement
 assert answers match.
 ```python
@@ -38,12 +38,12 @@ with test(
 AssertionError:
 set()
 ==
-{'gmail.UserEmailThread', 'gmail.Attachment', 'amazon.Product', 'file_system.Directory', 'gmail.GlobalEmailThread', 'gmail.Email',
-'amazon.Order', 'amazon.OrderItem', 'file_system.File'}
+{'gmail.GlobalEmailThread', 'amazon.Product', 'gmail.Email', 'amazon.Order', 'file_system.File', 'amazon.OrderItem',
+'gmail.Attachment', 'file_system.Directory', 'gmail.UserEmailThread'}
 
 In right but not left:
-['gmail.UserEmailThread', 'gmail.Attachment', 'amazon.Product', 'file_system.Directory', 'gmail.GlobalEmailThread', 'gmail.Email',
-'amazon.Order', 'amazon.OrderItem', 'file_system.File']
+['gmail.GlobalEmailThread', 'amazon.Product', 'gmail.Email', 'amazon.Order', 'file_system.File', 'amazon.OrderItem',
+'gmail.Attachment', 'file_system.Directory', 'gmail.UserEmailThread']
 >> Failed Requirement
 assert there is >= 1 added record in amazon.Order.
 ```python

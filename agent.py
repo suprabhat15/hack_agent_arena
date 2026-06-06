@@ -46,9 +46,19 @@ def solve(world: AppWorld) -> None:
     planner = Planner()
     verifier = Verifier()
 
+    sup = world.task.supervisor
+
     task_text = (
-        f"Supervisor: {world.task.supervisor}\n\n"
-        f"Task: {world.task.instruction}"
+        f"Your supervisor (the main user) is:\n"
+        f"- Name: {sup.first_name} {sup.last_name}\n"
+        f"- Email: {sup.email}\n"
+        f"- Phone number: {sup.phone_number}\n\n"
+        f"In the task below, 'I', 'me', 'my' refer to this supervisor.\n"
+        f"Their app accounts are listed by "
+        f"apis.supervisor.show_account_passwords().\n\n"
+        f"Task: {world.task.instruction}\n\n"
+        f"Begin by taking the first concrete step. Remember to finish with "
+        f"apis.supervisor.complete_task(answer=...) once the task is done."
     )
 
     messages = [
