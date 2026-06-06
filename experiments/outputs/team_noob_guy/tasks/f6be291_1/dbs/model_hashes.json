@@ -1,0 +1,8 @@
+{
+    "gmail": {
+        "User": 1,
+        "Email": 1,
+        "GlobalEmailThread": 1,
+        "UserEmailThread": 2
+    }
+}
