@@ -28,7 +28,7 @@ EXPERIMENT = os.environ.get(
 MAX_INTERACTIONS = int(
     os.environ.get(
         "MAX_INTERACTIONS",
-        "30"
+        "50"
     )
 )
 
@@ -68,6 +68,9 @@ def solve(world: AppWorld) -> None:
         }
     ]
 
+    did_mutation = False
+    warned_noop = False
+
     for step in range(MAX_INTERACTIONS):
 
         state_summary = memory.state.summary()
@@ -92,6 +95,40 @@ def solve(world: AppWorld) -> None:
 
         code = Executor.extract_code(reply)
 
+        # --------------------------------------------------
+        # NO-OP COMPLETION GUARD
+        # --------------------------------------------------
+        # If the model tries to finish an ACTION task without ever
+        # having changed world state (and without reporting an answer),
+        # it is almost certainly completing prematurely. Block it once
+        # and force it to actually perform the action.
+        if (
+            Executor.completes_task(code)
+            and not Executor.passes_answer(code)
+            and not did_mutation
+            and not warned_noop
+        ):
+            warned_noop = True
+            print("⚠ blocked premature no-op complete_task")
+            messages.append(
+                {"role": "assistant", "content": reply}
+            )
+            messages.append(
+                {
+                    "role": "user",
+                    "content": (
+                        "You called complete_task() but have not yet "
+                        "changed anything in the world (no add/delete/"
+                        "update/send/pay/etc. succeeded). If this task "
+                        "requires an action, PERFORM the actual mutating "
+                        "API call now and verify it succeeded BEFORE "
+                        "completing. Only complete now if the task is "
+                        "purely a question — in which case pass answer=."
+                    ),
+                }
+            )
+            continue
+
         print("\n" + "=" * 80)
         print(code)
         print("=" * 80 + "\n")
@@ -104,6 +141,22 @@ def solve(world: AppWorld) -> None:
         )
 
         output_str = str(output)
+
+        execution_failed = (
+            "Execution failed" in output_str
+            or "Traceback" in output_str
+        )
+
+        # Mark that we've actually changed the world (only on success),
+        # so the no-op guard knows a real action happened.
+        if (
+            Executor.calls_mutating_api(code)
+            and not execution_failed
+        ):
+            did_mutation = True
+            memory.state.completed_steps.append(
+                code.strip().splitlines()[-1][:120]
+            )
 
         # --------------------------------------------------
         # MEMORY UPDATE
@@ -148,11 +201,12 @@ def solve(world: AppWorld) -> None:
             }
         )
 
-        # Keep context small
-        if len(messages) > 10:
+        # Keep context bounded but large enough to remember progress on
+        # long multi-step (difficulty 2/3) tasks.
+        if len(messages) > 24:
             messages = (
                 [messages[0]]
-                + messages[-9:]
+                + messages[-23:]
             )
 
         # --------------------------------------------------

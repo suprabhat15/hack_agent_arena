@@ -21,22 +21,49 @@ class Verifier:
 
         output = output.lower()
 
-        if "401" in output:
+        # Only emit a failure hint when the step ACTUALLY failed.
+        # AppWorld JSON contains the literal "null" all the time, so we
+        # must not treat its presence as an error.
+        failed = (
+            "execution failed" in output
+            or "traceback" in output
+            or "status code is 4" in output
+            or "status code is 5" in output
+        )
+
+        if not failed:
+            return ""
+
+        if "401" in output or "unauthorized" in output:
             return (
                 "Authentication failed. "
                 "Reuse or refresh token."
             )
 
-        if "null" in output:
+        if (
+            "name 'null'" in output
+            or "null is not defined" in output
+        ):
             return (
                 "JSON null must become "
                 "Python None."
             )
 
-        if "unexpected keyword" in output:
+        if (
+            "unexpected keyword" in output
+            or "field required" in output
+            or "validation error" in output
+        ):
             return (
-                "Check API docs "
-                "for parameter names."
+                "Check the API doc for exact parameter "
+                "names and required fields; fetch any "
+                "missing ids instead of guessing."
             )
 
-        return ""
+        if "no api named" in output:
+            return (
+                "That API does not exist. List the app's "
+                "APIs and pick the correct one."
+            )
+
+        return "Fix this specific failing call; do not restart the task."

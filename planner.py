@@ -5,31 +5,16 @@ class Planner:
         task: str,
         state_summary: str
     ):
-
-        return f"""
-TASK:
-
-{task}
-
-CURRENT STATE:
-
-{state_summary}
-
-RULES:
-
-1. Never login twice if a token exists.
-
-2. Never inspect the same API docs twice.
-
-3. Reuse credentials.
-
-4. Reuse access tokens.
-
-5. If an API failed,
-   fix the failure instead of restarting.
-
-6. Prefer completing the task
-   over exploring.
-
-Return only the NEXT action.
-"""
+        # The task and full state are already supplied to the model
+        # elsewhere, so keep this hint short and behavioural — it is
+        # prepended to every turn.
+        return (
+            "Decide the single next action that moves the task forward.\n"
+            "- Don't re-login, re-inspect docs, or re-fetch data you "
+            "already have (see Known State / Recent Steps).\n"
+            "- If the last action failed, fix THAT call; don't restart.\n"
+            "- Prefer making progress over exploring.\n"
+            "- For action tasks, actually perform the mutation and verify "
+            "it succeeded before completing.\n"
+            "Return only the NEXT action as one python block."
+        )

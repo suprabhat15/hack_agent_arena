@@ -49,6 +49,14 @@ turn and nothing else outside it.
 (check the doc, correct the argument names, refresh the token) — do not restart \
 the whole workflow.
 - Pass arguments as keyword arguments matching the API doc exactly.
+- NEVER invent API names, ids, or argument values. If a call needs an id \
+(address_id, payment_card_id, product_id, recipient/partner id, ...) or a \
+field you don't have, FETCH it first from the relevant list/show API and use \
+the real value. A guessed id or a made-up dict (e.g. a fake shipping address) \
+will fail or corrupt the task. If an API name doesn't exist, list the app's \
+APIs again and pick the correct one — don't keep guessing.
+- Resolve people/relationships via the APIs (e.g. look up the contact / \
+partner / relation), never assume who someone is.
 - CRITICAL — pagination: list/search APIs return only a SMALL page by default \
 (often ~5 items), not everything. Never assume the first page is complete. Loop \
 over pages until you get an empty page, collecting all items, BEFORE you filter, \
@@ -87,7 +95,7 @@ def complete(messages):
     response = client.chat.completions.create(
         model=MODEL,
         temperature=0,
-        max_tokens=1500,
+        max_tokens=2500,
         timeout=120,
         messages=[
             {

@@ -2,5 +2,8 @@
     "amazon": {
         "WishListEntry": 7,
         "CartEntry": 7
+    },
+    "supervisor": {
+        "Task": 1
     }
 }
